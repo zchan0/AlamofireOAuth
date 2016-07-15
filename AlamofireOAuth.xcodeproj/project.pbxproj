@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		158D030B5121247D986DBED4 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94A096E9E5870DC9E3E8ECA5 /* Pods.framework */; };
+		8B86C51F1D389A7C005E08CA /* OAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B86C51E1D389A7C005E08CA /* OAuthManager.swift */; };
 		8B8934431D37426C00BEA0FC /* OAuthCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8934421D37426C00BEA0FC /* OAuthCredential.swift */; };
 		8B8934451D37473A00BEA0FC /* OAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8934441D37473A00BEA0FC /* OAuth.swift */; };
 		8B8934481D378FA100BEA0FC /* OAuthOpenURLHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8934471D378FA100BEA0FC /* OAuthOpenURLHandler.swift */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		0C1CBD53351463B8B534194A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		8B86C51E1D389A7C005E08CA /* OAuthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthManager.swift; sourceTree = "<group>"; };
 		8B8934421D37426C00BEA0FC /* OAuthCredential.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthCredential.swift; sourceTree = "<group>"; };
 		8B8934441D37473A00BEA0FC /* OAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth.swift; sourceTree = "<group>"; };
 		8B8934471D378FA100BEA0FC /* OAuthOpenURLHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthOpenURLHandler.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 			children = (
 				8B8934441D37473A00BEA0FC /* OAuth.swift */,
 				8B8934491D37D29F00BEA0FC /* OAuth1.swift */,
+				8B86C51E1D389A7C005E08CA /* OAuthManager.swift */,
 				8B8934421D37426C00BEA0FC /* OAuthCredential.swift */,
 				8B8934471D378FA100BEA0FC /* OAuthOpenURLHandler.swift */,
 				8B95A4001D3726640075763B /* AppDelegate.swift */,
@@ -359,6 +362,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B8934481D378FA100BEA0FC /* OAuthOpenURLHandler.swift in Sources */,
+				8B86C51F1D389A7C005E08CA /* OAuthManager.swift in Sources */,
 				8B8934431D37426C00BEA0FC /* OAuthCredential.swift in Sources */,
 				8B89344A1D37D29F00BEA0FC /* OAuth1.swift in Sources */,
 				8B95A4031D3726640075763B /* ViewController.swift in Sources */,
