@@ -34,23 +34,21 @@ class OAuth1: OAuth {
             .responseString { response in
                 guard let data = response.data else { return }
                 let responseString = String(data: data, encoding: NSUTF8StringEncoding)!
-                let dict = responseString.generateParameters()
-                self.credential.oauth_token = dict["oauth_token"] ?? ""
-                self.credential.oauth_token_secret = dict["oauth_token_secret"] ?? ""
+                self.updateCredentialOAuthTokenAndTokenSecretWith(aString: responseString)
                 
                 //  step 3: get access token
                 //          config callback action when get authorized request token
                 self.observeCallbackWith(callback: { [weak self] (url) in
                     guard let `self` = self else { return }
-                    let authorizedRequestToken = url.query
-                    let dict = authorizedRequestToken?.generateParameters()
-                    self.credential.oauth_token = dict!["oauth_token"] ?? ""
+                    if let authorizedRequestToken = url.query {
+                        self.updateCredentialOAuthTokenAndTokenSecretWith(aString: authorizedRequestToken)
+                    }
                     
                     let parameters = self.signParameters(.GET, Url: self.access_token_url)
                     Alamofire.request(.GET, self.access_token_url, parameters: parameters, encoding: .URLEncodedInURL, headers: nil).responseString { response in
                         guard let data = response.data else { return }
                         let responseString = String(data: data, encoding: NSUTF8StringEncoding)!
-                        print(responseString)
+                        self.updateCredentialOAuthTokenAndTokenSecretWith(aString: responseString)
                         completionHandler(self.credential)
                     }
                 })
@@ -91,5 +89,20 @@ extension OAuth1 {
         ]
         
         return parameters
+    }
+    
+    /**
+     update self.credential's oauth_token & oauth_token_secret
+     
+     - parameter string: a key-value string, like "oauth_token = xxx & oauth_token_secret = xxx "
+     */
+    private func updateCredentialOAuthTokenAndTokenSecretWith(aString string: String) {
+        let dict = string.generateParameters()
+        if let oauthToken = dict["oauth_token"]{
+            credential.oauth_token = oauthToken.safeStringByRemovingPercentEncoding
+        }
+        if let oauthTokenSecret = dict["oauth_token_secret"] {
+            credential.oauth_token_secret = oauthTokenSecret.safeStringByRemovingPercentEncoding
+        }
     }
 }

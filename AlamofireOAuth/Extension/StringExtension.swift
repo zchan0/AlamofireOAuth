@@ -30,4 +30,8 @@ extension String {
     func contains(aString: String) -> Bool {
         return self.rangeOfString(aString) != nil
     }
+    
+    var safeStringByRemovingPercentEncoding: String {
+        return self.stringByRemovingPercentEncoding ?? self
+    }
 }

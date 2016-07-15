@@ -27,7 +27,8 @@ class ViewController: UIViewController {
             safariHandler.animated = false
             oauth1.authorizeURLHandler = safariHandler
             oauth1.fetchAccessTokenWith(callbackUrl: callbackUrl, completionHandler: { credential in
-                print(credential)
+                print(credential.oauth_token)
+                print(credential.oauth_token_secret)
             })
 
         } else {
