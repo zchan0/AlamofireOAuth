@@ -13,6 +13,13 @@ protocol OAuthOpenURLHandler {
     func openURL(url: NSURL)
 }
 
+class ExternalOpenURLHandler: NSObject, OAuthOpenURLHandler {
+    
+    func openURL(url: NSURL) {
+        UIApplication.sharedApplication().openURL(url)
+    }
+}
+
 
 @available(iOS 9.0, *)
 class SafariOpenURLHandler: NSObject, OAuthOpenURLHandler {
