@@ -26,7 +26,7 @@ class OAuth1: OAuth {
         super.init(consumerKey: consumerKey, consumerSecret: consumerSecret)
     }
     
-    func fetchAccessTokenWith(callbackUrl url: String, completionHandler: (OAuthCredential) -> Void) {
+    func fetchAccessTokenWith(callbackUrl url: String, completionHandler: (OAuth) -> Void) {
         
         // step 1: get unauthorized reqeust token
         let parameters = signParameters(.GET, Url: request_token_url)
@@ -49,7 +49,7 @@ class OAuth1: OAuth {
                         guard let data = response.data else { return }
                         let responseString = String(data: data, encoding: NSUTF8StringEncoding)!
                         self.updateCredentialOAuthTokenAndTokenSecretWith(aString: responseString)
-                        completionHandler(self.credential)
+                        completionHandler(self)
                     }
                 })
                 
