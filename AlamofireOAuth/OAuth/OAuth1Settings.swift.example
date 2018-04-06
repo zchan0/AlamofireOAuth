@@ -1,0 +1,19 @@
+//
+//  OAuth1Settings.swift
+//  AlamofireOAuth1
+//
+//  Created by Cencen Zheng on 22/03/2018.
+//  Copyright © 2018 Cencen Zheng. All rights reserved.
+//
+
+import Foundation
+
+struct OAuth1Settings {
+    static let ConsumerKey = ""
+    static let ConsumerSecret = ""
+    static let RequestTokenUrl = ""
+    static let AuthorizeUrl = ""
+    static let AccessTokenUrl = ""
+    static let CallbackUrl = ""
+    static let BaseUrl = ""
+}

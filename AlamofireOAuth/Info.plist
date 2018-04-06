@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>AlamofireOAuth1</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -24,10 +26,20 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>space.minesecret.oauth</string>
+			<string>space.minesecret.fanfou</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>afoauth</string>
+				<string>afoauth-fanfou</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>space.minesecret.twitter</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>afoauth-twitter</string>
 			</array>
 		</dict>
 	</array>

@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:AlamofireOAuth.xcodeproj">
+      location = "group:/Users/zhengcc/Developer/iOS/AlamofireOAuth/AlamofireOAuth1.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
