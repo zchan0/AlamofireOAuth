@@ -29,7 +29,7 @@
 			<string>space.minesecret.fanfou</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>afoauth-fanfou</string>
+				<string>alamofire-oauth1</string>
 			</array>
 		</dict>
 		<dict>
@@ -39,7 +39,7 @@
 			<string>space.minesecret.twitter</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>afoauth-twitter</string>
+				<string>alamofire-oauth1</string>
 			</array>
 		</dict>
 	</array>
@@ -49,8 +49,18 @@
 	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>fanfou.com</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSTemporaryExceptionMinimumTLSVersion</key>
+				<string>TLSv1.1</string>
+			</dict>
+		</dict>
 	</dict>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

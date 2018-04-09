@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        if url.scheme == "afoauth-fanfou" && url.host == "oauth_callback" {
+        if url.host == "alamofire-oauth1" {
             OAuth1.handleCallback(callbackURL: url)
         }
         return true

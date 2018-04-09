@@ -36,11 +36,14 @@ open class APIClient: RequestAdapter {
     func setOAuth(
         withCallbackUrl callbackUrl: String,
         requestMethod: HTTPMethod,
-        URLHandler: OAuthOpenURLHandler,
+        URLHandler: OAuthOpenURLHandler? = nil,
         successHandler: @escaping OAuth1.SuccessHandler,
         failureHandler: @escaping OAuth1.FailureHandler)
     {
-        oauth1.authorizeURLHandler = URLHandler
+        if let handler = URLHandler {
+            oauth1.authorizeURLHandler = handler
+        }
+        
         oauth1.fetchAccessToken(withCallbackUrl: callbackUrl, accessMethod: requestMethod, successHandler: { (accessToken) in
             do {
                 try OAuth1TokenStore.shared.storeToken(accessToken)

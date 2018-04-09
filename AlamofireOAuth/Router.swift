@@ -9,15 +9,18 @@
 import Alamofire
 
 enum Router: URLRequestConvertible {
-    case homeTimeline
+    case fanfouHome
+    case twitterHome
     
     static let baseUrl = OAuth1Settings.BaseUrl
     
     func asURLRequest() throws -> URLRequest {
         let result: (path: String, parameters: Parameters?, method: HTTPMethod) = {
             switch self {
-            case .homeTimeline:
+            case .fanfouHome:
                 return ("statuses/home_timeline.json", nil, .get)
+            case .twitterHome:
+                return ("statuses/user_timeline.json", nil, .get)
             }
         }()
         
