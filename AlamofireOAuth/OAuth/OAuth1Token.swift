@@ -26,13 +26,12 @@ public struct OAuth1Token: Codable {
             return nil
         }
         
-        guard query.range(of: "^oauth_token=[a-zA-z0-9&=]+", options: .regularExpression, range: nil, locale: nil) != nil
-        else {
-            print("Error: failed to request token, check the query: \n \(query)")
+        let parameters = self.parametersFrom(query: query)
+        
+        if let confirmed = parameters["oauth_callback_confirmed"], confirmed != "true" {
+            print("Error: value for oauth_callback_confirmed is not true")
             return nil
         }
-        
-        let parameters = self.parametersFrom(query: query)
         
         guard let oauthToken = parameters["oauth_token"] else {
             print("Error: cannot find oauth_token field in \(query)")
@@ -51,12 +50,26 @@ public struct OAuth1Token: Codable {
     
     // k1 = v1 & k2 = v2 & ... => [k1: v1, k2: v2, ...]
     private func parametersFrom(query: String) -> [String: String] {
+        let scanner = Scanner(string: query)
+        
+        var key: NSString?
+        var value: NSString?
         var parameters = [String: String]()
-        var pair = [String]()
-        query.components(separatedBy: "&").forEach {
-            pair = $0.components(separatedBy: "=")
-            parameters.updateValue(pair[1], forKey: pair[0])
+        
+        while !scanner.isAtEnd {
+            key = nil
+            scanner.scanUpTo("=", into: &key)
+            scanner.scanString("=", into: nil)
+            
+            value = nil
+            scanner.scanUpTo("&", into: &value)
+            scanner.scanString("&", into: nil)
+            
+            if let key = key as String?, let value = value as String? {
+                parameters.updateValue(value, forKey: key)
+            }
         }
+        
         return parameters
     }
 }

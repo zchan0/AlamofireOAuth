@@ -134,7 +134,7 @@ extension OAuth1 {
         
         Alamofire.request(requestTokenUrl, parameters: parameters).responseString { (response) in
             switch response.result {
-                // statusCode within `200<..300`, and
+            // statusCode within `200<..300`, and
             // the `Content-Type` header of the response matches the `Accept` header of the request
             case .success(let query):
                 guard let token = OAuth1Token(query: query) else { return }
@@ -164,6 +164,10 @@ extension OAuth1 {
                 return
             }
             guard let authorizedToken = OAuth1Token(query: query) else { return }
+            // Your application should verify that the token matches the request token received in step 1.
+            // https://dev.twitter.com/web/sign-in/implementing
+            guard self.token == authorizedToken.token else { return }
+            
             successHandler(authorizedToken)
         }
         
@@ -192,6 +196,10 @@ extension OAuth1 {
         
         let signature = generateSignature(text: baseString)
         parameters["oauth_signature"] = signature
+        
+        if let verifier = requestToken.verifierCode {
+            parameters["oauth_verifier"] = verifier
+        }
         
         Alamofire.request(accessTokenUrl, parameters: parameters).responseString { (response) in
             switch response.result {
