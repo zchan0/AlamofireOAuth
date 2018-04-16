@@ -14,17 +14,17 @@ struct OAuthOpenURLHandlerNotification {
     static let CallbackUrlKey = "AlamofireOAuthCallbackNotificationURLKey"
 }
 
-protocol OAuthOpenURLHandler {
+public protocol OAuthOpenURLHandler {
     func openURL(URL: URL)
 }
 
-class SafariOpenURLHandler: NSObject, OAuthOpenURLHandler {
-    func openURL(URL: URL) {
+public class BrowserOpenURLHandler: NSObject, OAuthOpenURLHandler {
+    public func openURL(URL: URL) {
         UIApplication.shared.open(URL, options: [:], completionHandler: nil)
     }
 }
 
-class SafariViewControllerHandler: NSObject, OAuthOpenURLHandler {
+public class SafariOpenURLHandler: NSObject, OAuthOpenURLHandler {
     var viewController: UIViewController
     var observers = [String : Any]()
     
@@ -37,7 +37,7 @@ class SafariViewControllerHandler: NSObject, OAuthOpenURLHandler {
         super.init()
     }
     
-    func openURL(URL: URL) {
+    public func openURL(URL: URL) {
         let controller = SFSafariViewController(url: URL)
         let key = UUID().uuidString
         

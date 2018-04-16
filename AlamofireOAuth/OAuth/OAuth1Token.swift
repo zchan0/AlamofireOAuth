@@ -86,14 +86,9 @@ class OAuth1TokenStore {
     
     static let shared = OAuth1TokenStore()
     
-    private let service = "AlamofireOAuth1Service"
-    private var identifier: String 
+    private static let service = "AlamofireOAuth1Service"
     
-    private init() {
-        self.identifier = UUID().uuidString
-    }
-    
-    func retrieveToken() throws -> OAuth1Token {
+    class func retrieveToken(withIdentifier identifier: String) throws -> OAuth1Token {
         // Build a query to find the item that matches the service, account.
         var query = OAuth1TokenStore.keychainQuery(withService: service, account: identifier)
         query[kSecMatchLimit as String] = kSecMatchLimitOne
@@ -122,7 +117,7 @@ class OAuth1TokenStore {
         return token
     }
     
-    func deleteToken() throws {
+    class func deleteToken(withIdentifier identifier: String) throws {
         // Delete the existing item from the keychain.
         let query = OAuth1TokenStore.keychainQuery(withService: service, account: identifier)
         let status = SecItemDelete(query as CFDictionary)
@@ -131,17 +126,15 @@ class OAuth1TokenStore {
         guard status == noErr || status == errSecItemNotFound else {
             throw KeychainError.unhandledError(status: status)
         }
-        
-        identifier = UUID().uuidString
     }
     
-    func storeToken(_ token: OAuth1Token) throws {
+    class func storeToken(_ token: OAuth1Token, withIdentifier identifier: String) throws {
         // Encode the token into an Data object.
         let tokenData = try JSONEncoder().encode(token)
         
         do {
             // Check for an existing item in the keychain.
-            try _ = retrieveToken()
+            try _ = retrieveToken(withIdentifier: identifier)
             
             // Update the existing item with the new token.
             var attributesToUpdate = [String: AnyObject]()
@@ -171,7 +164,7 @@ class OAuth1TokenStore {
         }
     }
     
-    private static func keychainQuery(withService service: String, account: String) -> [String: AnyObject] {
+    private class func keychainQuery(withService service: String, account: String) -> [String: AnyObject] {
         var query = [String : AnyObject]()
         query[kSecClass as String] = kSecClassGenericPassword
         query[kSecAttrService as String] = service as AnyObject

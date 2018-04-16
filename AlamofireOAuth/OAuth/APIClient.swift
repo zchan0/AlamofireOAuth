@@ -9,53 +9,35 @@
 import Alamofire
 
 open class APIClient: RequestAdapter {
-    fileprivate var oauth1: OAuth1
     open var sessionManager: SessionManager
+    open static var `default` = APIClient()
     
-    init(key: String, secret: String, requestTokenUrl: String, authorizeUrl: String, accessTokenUrl: String) {
-        self.oauth1 = OAuth1(key: key,
-                             secret: secret,
-                             requestTokenUrl: requestTokenUrl,
-                             authorizeUrl: authorizeUrl,
-                             accessTokenUrl: accessTokenUrl)
-        self.sessionManager = SessionManager()
+    fileprivate let oauth1: OAuth1
+    fileprivate let errorHandler: (Error) -> Void = { (error) in
+        print(error.localizedDescription)
     }
     
-    convenience init() {
-        self.init(key: OAuth1Settings.ConsumerKey,
-                  secret: OAuth1Settings.ConsumerSecret,
-                  requestTokenUrl: OAuth1Settings.RequestTokenUrl,
-                  authorizeUrl: OAuth1Settings.AuthorizeUrl,
-                  accessTokenUrl: OAuth1Settings.AccessTokenUrl)
+    private init() {
+        self.oauth1 = OAuth1()
+        self.sessionManager = SessionManager()
+        self.sessionManager.adapter = self
     }
     
     open func adapt(_ urlRequest: URLRequest) throws -> URLRequest {
         return try oauth1.adaptRequest(urlRequest)
     }
     
-    func setOAuth(
-        withCallbackUrl callbackUrl: String,
-        requestMethod: HTTPMethod,
-        URLHandler: OAuthOpenURLHandler? = nil,
-        successHandler: @escaping OAuth1.SuccessHandler,
-        failureHandler: @escaping OAuth1.FailureHandler)
-    {
-        if let handler = URLHandler {
-            oauth1.authorizeURLHandler = handler
-        }
-        
-        oauth1.fetchAccessToken(withCallbackUrl: callbackUrl, accessMethod: requestMethod, successHandler: { (accessToken) in
-            do {
-                try OAuth1TokenStore.shared.storeToken(accessToken)
-                self.sessionManager.adapter = self
-                successHandler(accessToken)
-            } catch {
-                failureHandler(error)
-            }
-        }, failureHandler: failureHandler) 
+    public func request(_ router: URLRequestConvertible) -> DataRequest {
+        return sessionManager.request(router)
     }
     
-    func request(_ router: URLRequestConvertible) -> DataRequest {
-        return sessionManager.request(router)
+    func authorize(withAuthorizeURLHandler authorizeURLHandler: OAuthOpenURLHandler? = nil, completion: @escaping () -> Void) {
+        if let URLHandler = authorizeURLHandler {
+            oauth1.authorizeURLHandler = URLHandler
+        }
+        oauth1.fetchAccessToken(withCallbackUrl: OAuth1Settings.CallbackUrl,
+                                accessMethod: .get,
+                                successHandler: completion,
+                                failureHandler: errorHandler)
     }
 }

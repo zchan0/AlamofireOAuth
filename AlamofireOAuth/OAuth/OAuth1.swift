@@ -35,7 +35,8 @@ public class OAuth1 {
     private var requestTokenUrl: String
     private var callbackObserver: Any?
     private let version: String = "1.0"
-    
+    private static let AccessTokenIdentifier: String = "AlamofireOAuth1.AccessToken"
+        
     init(key: String, secret: String, requestTokenUrl: String, authorizeUrl: String, accessTokenUrl: String) {
         self.key = key
         self.secret = secret
@@ -45,7 +46,7 @@ public class OAuth1 {
         self.accessTokenUrl = accessTokenUrl
         self.requestTokenUrl = requestTokenUrl
         self.signatureMethod = .HMAC_SHA1
-        self.authorizeURLHandler = SafariOpenURLHandler()
+        self.authorizeURLHandler = BrowserOpenURLHandler()
     }
     
     convenience init() {
@@ -64,7 +65,7 @@ public class OAuth1 {
     func fetchAccessToken(
         withCallbackUrl callback: String? = nil,
         accessMethod: HTTPMethod,
-        successHandler: @escaping SuccessHandler,
+        successHandler: @escaping () -> Void,
         failureHandler: @escaping FailureHandler)
     {
         let callbackUrl = callback ?? "oob"
@@ -72,17 +73,19 @@ public class OAuth1 {
         self.acquireUnauthorizedRequestToken(withAccessMethod: accessMethod, successHandler: { (requestToken) in
             self.acquireAuthorizedRequestToken(withCallback: callbackUrl, requestToken: requestToken, successHandler: { (requestToken) in
                 self.acquireAccessToken(withRequestToken: requestToken, accessMethod: accessMethod, successHandler: { (accessToken) in
-                    successHandler(accessToken)
+                    do {
+                        try OAuth1TokenStore.storeToken(accessToken, withIdentifier: OAuth1.AccessTokenIdentifier)
+                        successHandler()
+                    } catch { }
                 }, failureHandler: failureHandler)
             })
         }, failureHandler: failureHandler)
     }
     
     func adaptRequest(_ urlRequest: URLRequest) throws -> URLRequest {
-        guard let accessToken = try? OAuth1TokenStore.shared.retrieveToken() else {
+        guard let accessToken = try? OAuth1TokenStore.retrieveToken(withIdentifier: OAuth1.AccessTokenIdentifier) else {
             throw OAuth1Error.noToken
         }
-        
         token = accessToken.token
         tokenSecret = accessToken.tokenSecret
         
@@ -96,8 +99,7 @@ public class OAuth1 {
                 throw OAuth1Error.noBaseString
         }
         
-        guard let signature = generateSignature(text: baseString).percentEncoding()
-            else {
+        guard let signature = generateSignature(text: baseString).percentEncoding() else {
                 throw OAuth1Error.invalidSignature
         }
         
