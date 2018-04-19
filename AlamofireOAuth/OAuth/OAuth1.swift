@@ -23,8 +23,8 @@ public class OAuth1 {
     public typealias SuccessHandler = (OAuth1Token) -> Void
     public typealias FailureHandler = (Error) -> Void
     
-    var signatureMethod: OAuthSignatureMethod
-    var authorizeURLHandler: OAuthOpenURLHandler
+    public var signatureMethod: OAuthSignatureMethod
+    public var authorizeURLHandler: OAuthOpenURLHandler
     
     private var key: String
     private var secret: String
@@ -35,8 +35,8 @@ public class OAuth1 {
     private var requestTokenUrl: String
     private var callbackObserver: Any?
     private let version: String = "1.0"
-    private static let AccessTokenIdentifier: String = "AlamofireOAuth1.AccessToken"
-        
+    
+    
     init(key: String, secret: String, requestTokenUrl: String, authorizeUrl: String, accessTokenUrl: String) {
         self.key = key
         self.secret = secret
@@ -65,7 +65,7 @@ public class OAuth1 {
     func fetchAccessToken(
         withCallbackUrl callback: String? = nil,
         accessMethod: HTTPMethod,
-        successHandler: @escaping () -> Void,
+        successHandler: @escaping SuccessHandler,
         failureHandler: @escaping FailureHandler)
     {
         let callbackUrl = callback ?? "oob"
@@ -73,19 +73,13 @@ public class OAuth1 {
         self.acquireUnauthorizedRequestToken(withAccessMethod: accessMethod, successHandler: { (requestToken) in
             self.acquireAuthorizedRequestToken(withCallback: callbackUrl, requestToken: requestToken, successHandler: { (requestToken) in
                 self.acquireAccessToken(withRequestToken: requestToken, accessMethod: accessMethod, successHandler: { (accessToken) in
-                    do {
-                        try OAuth1TokenStore.storeToken(accessToken, withIdentifier: OAuth1.AccessTokenIdentifier)
-                        successHandler()
-                    } catch { }
+                    successHandler(accessToken)
                 }, failureHandler: failureHandler)
             })
         }, failureHandler: failureHandler)
     }
     
-    func adaptRequest(_ urlRequest: URLRequest) throws -> URLRequest {
-        guard let accessToken = try? OAuth1TokenStore.retrieveToken(withIdentifier: OAuth1.AccessTokenIdentifier) else {
-            throw OAuth1Error.noToken
-        }
+    func adaptRequest(_ urlRequest: URLRequest, withAccessToken accessToken: OAuth1Token) throws -> URLRequest {
         token = accessToken.token
         tokenSecret = accessToken.tokenSecret
         

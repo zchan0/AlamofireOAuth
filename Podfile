@@ -4,15 +4,16 @@ platform :ios, '10.0'
 use_frameworks!
 
 pod 'Alamofire'
+pod 'KeychainAccess'
 
-target 'AlamofireOAuth' do
-
-end
-
-target 'AlamofireOAuthTests' do
+target 'AlamofireOAuth1' do
 
 end
 
-target 'AlamofireOAuthUITests' do
+target 'AlamofireOAuth1Tests' do
+
+end
+
+target 'AlamofireOAuth1UITests' do
 
 end

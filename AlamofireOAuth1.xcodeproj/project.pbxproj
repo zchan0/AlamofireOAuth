@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		562DAE9BB4377A91FC10C612 /* Pods_AlamofireOAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDA08BA6E8CD9D143A189AB4 /* Pods_AlamofireOAuth.framework */; };
-		624248E0F14C4A552EEF837C /* Pods_AlamofireOAuthUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0285DF7B12067DAA6C30FE25 /* Pods_AlamofireOAuthUITests.framework */; };
+		57C72389160BDABB77E67C16 /* Pods_AlamofireOAuth1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1000807C5C34A6D932CD48DD /* Pods_AlamofireOAuth1.framework */; };
+		7B071BFC0DEAEC5B201F1D00 /* Pods_AlamofireOAuth1UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2A74001C4791B44ED3FF64 /* Pods_AlamofireOAuth1UITests.framework */; };
+		7F98AA94B305D6B43A56C1D9 /* Pods_AlamofireOAuth1Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA14FE57E3B6B440ED3BCE12 /* Pods_AlamofireOAuth1Tests.framework */; };
 		8B95A4081D3726640075763B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B95A4071D3726640075763B /* Assets.xcassets */; };
 		8B95A40B1D3726640075763B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B95A4091D3726640075763B /* LaunchScreen.storyboard */; };
 		8B95A4161D3726640075763B /* AlamofireOAuthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B95A4151D3726640075763B /* AlamofireOAuthTests.swift */; };
@@ -23,7 +24,6 @@
 		8BDD76CF2077BAE7006479D3 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDD76CE2077BAE7006479D3 /* Router.swift */; };
 		8BDD76D32077C26B006479D3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDD76D22077C26B006479D3 /* ViewController.swift */; };
 		8BDD76D52077C534006479D3 /* OAuth1Settings.swift.example in Sources */ = {isa = PBXBuildFile; fileRef = 8BDD76D42077C534006479D3 /* OAuth1Settings.swift.example */; };
-		D83334E09EEE1672F9C0FE3A /* Pods_AlamofireOAuthTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B875CE31BA4B823344DD3187 /* Pods_AlamofireOAuthTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,11 +44,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0285DF7B12067DAA6C30FE25 /* Pods_AlamofireOAuthUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlamofireOAuthUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1FA74F829A991D85EECE93D1 /* Pods-AlamofireOAuthTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlamofireOAuthTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AlamofireOAuthTests/Pods-AlamofireOAuthTests.debug.xcconfig"; sourceTree = "<group>"; };
-		40F5C07015D5A1A69C49E879 /* Pods-AlamofireOAuth.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlamofireOAuth.release.xcconfig"; path = "Pods/Target Support Files/Pods-AlamofireOAuth/Pods-AlamofireOAuth.release.xcconfig"; sourceTree = "<group>"; };
-		471EDC0CD5168A740AC3E24F /* Pods-AlamofireOAuthUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlamofireOAuthUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AlamofireOAuthUITests/Pods-AlamofireOAuthUITests.release.xcconfig"; sourceTree = "<group>"; };
-		7E9F2C481105FEFDA12597B1 /* Pods-AlamofireOAuth.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlamofireOAuth.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AlamofireOAuth/Pods-AlamofireOAuth.debug.xcconfig"; sourceTree = "<group>"; };
+		1000807C5C34A6D932CD48DD /* Pods_AlamofireOAuth1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlamofireOAuth1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5684D9EB78D4D3D7D0593E29 /* Pods-AlamofireOAuth1Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlamofireOAuth1Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AlamofireOAuth1Tests/Pods-AlamofireOAuth1Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		6D2A74001C4791B44ED3FF64 /* Pods_AlamofireOAuth1UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlamofireOAuth1UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B95A3FD1D3726640075763B /* AlamofireOAuth1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlamofireOAuth1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B95A4071D3726640075763B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B95A40A1D3726640075763B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -70,11 +68,13 @@
 		8BDD76D02077C1EB006479D3 /* AlamofireOAuth1-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AlamofireOAuth1-Bridging-Header.h"; sourceTree = "<group>"; };
 		8BDD76D22077C26B006479D3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8BDD76D42077C534006479D3 /* OAuth1Settings.swift.example */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OAuth1Settings.swift.example; sourceTree = "<group>"; };
-		8ED544F29570B26C58F95047 /* Pods-AlamofireOAuthUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlamofireOAuthUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AlamofireOAuthUITests/Pods-AlamofireOAuthUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		921F6DDFC60210C90B3F166C /* Pods-AlamofireOAuth1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlamofireOAuth1.release.xcconfig"; path = "Pods/Target Support Files/Pods-AlamofireOAuth1/Pods-AlamofireOAuth1.release.xcconfig"; sourceTree = "<group>"; };
 		94A096E9E5870DC9E3E8ECA5 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		98176176861BF80FD0727D46 /* Pods-AlamofireOAuthTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlamofireOAuthTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AlamofireOAuthTests/Pods-AlamofireOAuthTests.release.xcconfig"; sourceTree = "<group>"; };
-		B875CE31BA4B823344DD3187 /* Pods_AlamofireOAuthTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlamofireOAuthTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BDA08BA6E8CD9D143A189AB4 /* Pods_AlamofireOAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlamofireOAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D83EF2F3E4278280EA11DAB /* Pods-AlamofireOAuth1Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlamofireOAuth1Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AlamofireOAuth1Tests/Pods-AlamofireOAuth1Tests.release.xcconfig"; sourceTree = "<group>"; };
+		AA14FE57E3B6B440ED3BCE12 /* Pods_AlamofireOAuth1Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlamofireOAuth1Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9FDB734C1EAA99FE9EF49F7 /* Pods-AlamofireOAuth1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlamofireOAuth1.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AlamofireOAuth1/Pods-AlamofireOAuth1.debug.xcconfig"; sourceTree = "<group>"; };
+		CE662189B10E140FFAFA2693 /* Pods-AlamofireOAuth1UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlamofireOAuth1UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AlamofireOAuth1UITests/Pods-AlamofireOAuth1UITests.debug.xcconfig"; sourceTree = "<group>"; };
+		D0BE4364FFEC8C9438D3DE21 /* Pods-AlamofireOAuth1UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlamofireOAuth1UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AlamofireOAuth1UITests/Pods-AlamofireOAuth1UITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				562DAE9BB4377A91FC10C612 /* Pods_AlamofireOAuth.framework in Frameworks */,
+				57C72389160BDABB77E67C16 /* Pods_AlamofireOAuth1.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,7 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D83334E09EEE1672F9C0FE3A /* Pods_AlamofireOAuthTests.framework in Frameworks */,
+				7F98AA94B305D6B43A56C1D9 /* Pods_AlamofireOAuth1Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,7 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				624248E0F14C4A552EEF837C /* Pods_AlamofireOAuthUITests.framework in Frameworks */,
+				7B071BFC0DEAEC5B201F1D00 /* Pods_AlamofireOAuth1UITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,7 +113,7 @@
 				8B95A41F1D3726640075763B /* AlamofireOAuthUITests */,
 				8B95A3FE1D3726640075763B /* Products */,
 				BAAE3860E88F63AC8D422551 /* Frameworks */,
-				A348B75D8E033A1B5A9B50C0 /* Pods */,
+				CB1C69AC4C045E1C89BA4954 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -182,28 +182,28 @@
 			path = OAuth;
 			sourceTree = "<group>";
 		};
-		A348B75D8E033A1B5A9B50C0 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				7E9F2C481105FEFDA12597B1 /* Pods-AlamofireOAuth.debug.xcconfig */,
-				40F5C07015D5A1A69C49E879 /* Pods-AlamofireOAuth.release.xcconfig */,
-				1FA74F829A991D85EECE93D1 /* Pods-AlamofireOAuthTests.debug.xcconfig */,
-				98176176861BF80FD0727D46 /* Pods-AlamofireOAuthTests.release.xcconfig */,
-				8ED544F29570B26C58F95047 /* Pods-AlamofireOAuthUITests.debug.xcconfig */,
-				471EDC0CD5168A740AC3E24F /* Pods-AlamofireOAuthUITests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		BAAE3860E88F63AC8D422551 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				94A096E9E5870DC9E3E8ECA5 /* Pods.framework */,
-				BDA08BA6E8CD9D143A189AB4 /* Pods_AlamofireOAuth.framework */,
-				B875CE31BA4B823344DD3187 /* Pods_AlamofireOAuthTests.framework */,
-				0285DF7B12067DAA6C30FE25 /* Pods_AlamofireOAuthUITests.framework */,
+				1000807C5C34A6D932CD48DD /* Pods_AlamofireOAuth1.framework */,
+				AA14FE57E3B6B440ED3BCE12 /* Pods_AlamofireOAuth1Tests.framework */,
+				6D2A74001C4791B44ED3FF64 /* Pods_AlamofireOAuth1UITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CB1C69AC4C045E1C89BA4954 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B9FDB734C1EAA99FE9EF49F7 /* Pods-AlamofireOAuth1.debug.xcconfig */,
+				921F6DDFC60210C90B3F166C /* Pods-AlamofireOAuth1.release.xcconfig */,
+				5684D9EB78D4D3D7D0593E29 /* Pods-AlamofireOAuth1Tests.debug.xcconfig */,
+				9D83EF2F3E4278280EA11DAB /* Pods-AlamofireOAuth1Tests.release.xcconfig */,
+				CE662189B10E140FFAFA2693 /* Pods-AlamofireOAuth1UITests.debug.xcconfig */,
+				D0BE4364FFEC8C9438D3DE21 /* Pods-AlamofireOAuth1UITests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,12 +213,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8B95A4251D3726640075763B /* Build configuration list for PBXNativeTarget "AlamofireOAuth1" */;
 			buildPhases = (
-				765BC7EC069FFB70F855CF02 /* [CP] Check Pods Manifest.lock */,
+				63B36D2DA9DA2BF7E3224104 /* [CP] Check Pods Manifest.lock */,
 				8B95A3F91D3726640075763B /* Sources */,
 				8B95A3FA1D3726640075763B /* Frameworks */,
 				8B95A3FB1D3726640075763B /* Resources */,
-				5E6AEB00675A343AAB9A57C3 /* [CP] Embed Pods Frameworks */,
-				134B8AD9DA22CC4D59B289F4 /* [CP] Copy Pods Resources */,
+				856D0B73928638EEF1710874 /* [CP] Embed Pods Frameworks */,
+				2D000EFA97764C01331AEAB4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -233,12 +233,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8B95A4281D3726640075763B /* Build configuration list for PBXNativeTarget "AlamofireOAuth1Tests" */;
 			buildPhases = (
-				D4C8DC41FA350FA4C5717FC6 /* [CP] Check Pods Manifest.lock */,
+				E0FC5D65BB8793BEDDBFC8C4 /* [CP] Check Pods Manifest.lock */,
 				8B95A40D1D3726640075763B /* Sources */,
 				8B95A40E1D3726640075763B /* Frameworks */,
 				8B95A40F1D3726640075763B /* Resources */,
-				22CFB39A1F50E877FFC6EA19 /* [CP] Embed Pods Frameworks */,
-				542E0B4333A18D708D999185 /* [CP] Copy Pods Resources */,
+				8C7A9117B5E8EEC3C62C4128 /* [CP] Embed Pods Frameworks */,
+				69F5ACCBFEF99065A7C9D129 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -254,12 +254,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8B95A42B1D3726640075763B /* Build configuration list for PBXNativeTarget "AlamofireOAuth1UITests" */;
 			buildPhases = (
-				11A3EA161C2724392958352C /* [CP] Check Pods Manifest.lock */,
+				194033F5317209577993B9C3 /* [CP] Check Pods Manifest.lock */,
 				8B95A4181D3726640075763B /* Sources */,
 				8B95A4191D3726640075763B /* Frameworks */,
 				8B95A41A1D3726640075763B /* Resources */,
-				8AA6110FF15D264D92D45445 /* [CP] Embed Pods Frameworks */,
-				ED84A8ED205F9752B8281205 /* [CP] Copy Pods Resources */,
+				5D469A308FD8D4BB649E72C5 /* [CP] Embed Pods Frameworks */,
+				E620D66E96B4416AE9D6D0FF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -343,7 +343,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		11A3EA161C2724392958352C /* [CP] Check Pods Manifest.lock */ = {
+		194033F5317209577993B9C3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -354,14 +354,14 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-AlamofireOAuthUITests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-AlamofireOAuth1UITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		134B8AD9DA22CC4D59B289F4 /* [CP] Copy Pods Resources */ = {
+		2D000EFA97764C01331AEAB4 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -373,28 +373,48 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AlamofireOAuth/Pods-AlamofireOAuth-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AlamofireOAuth1/Pods-AlamofireOAuth1-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		22CFB39A1F50E877FFC6EA19 /* [CP] Embed Pods Frameworks */ = {
+		5D469A308FD8D4BB649E72C5 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-AlamofireOAuthTests/Pods-AlamofireOAuthTests-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-AlamofireOAuth1UITests/Pods-AlamofireOAuth1UITests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AlamofireOAuthTests/Pods-AlamofireOAuthTests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AlamofireOAuth1UITests/Pods-AlamofireOAuth1UITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		542E0B4333A18D708D999185 /* [CP] Copy Pods Resources */ = {
+		63B36D2DA9DA2BF7E3224104 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AlamofireOAuth1-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		69F5ACCBFEF99065A7C9D129 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -406,28 +426,50 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AlamofireOAuthTests/Pods-AlamofireOAuthTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AlamofireOAuth1Tests/Pods-AlamofireOAuth1Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5E6AEB00675A343AAB9A57C3 /* [CP] Embed Pods Frameworks */ = {
+		856D0B73928638EEF1710874 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-AlamofireOAuth/Pods-AlamofireOAuth-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-AlamofireOAuth1/Pods-AlamofireOAuth1-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AlamofireOAuth/Pods-AlamofireOAuth-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AlamofireOAuth1/Pods-AlamofireOAuth1-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		765BC7EC069FFB70F855CF02 /* [CP] Check Pods Manifest.lock */ = {
+		8C7A9117B5E8EEC3C62C4128 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-AlamofireOAuth1Tests/Pods-AlamofireOAuth1Tests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AlamofireOAuth1Tests/Pods-AlamofireOAuth1Tests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E0FC5D65BB8793BEDDBFC8C4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -438,50 +480,14 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-AlamofireOAuth-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-AlamofireOAuth1Tests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8AA6110FF15D264D92D45445 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-AlamofireOAuthUITests/Pods-AlamofireOAuthUITests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AlamofireOAuthUITests/Pods-AlamofireOAuthUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D4C8DC41FA350FA4C5717FC6 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-AlamofireOAuthTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		ED84A8ED205F9752B8281205 /* [CP] Copy Pods Resources */ = {
+		E620D66E96B4416AE9D6D0FF /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -493,7 +499,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AlamofireOAuthUITests/Pods-AlamofireOAuthUITests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AlamofireOAuth1UITests/Pods-AlamofireOAuth1UITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -609,6 +615,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PODS_PODFILE_DIR_PATH = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -659,6 +666,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PODS_PODFILE_DIR_PATH = "";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_VERSION = 4.0;
@@ -669,9 +677,8 @@
 		};
 		8B95A4261D3726640075763B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7E9F2C481105FEFDA12597B1 /* Pods-AlamofireOAuth.debug.xcconfig */;
+			baseConfigurationReference = B9FDB734C1EAA99FE9EF49F7 /* Pods-AlamofireOAuth1.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = KWVYNK7KYH;
@@ -688,9 +695,8 @@
 		};
 		8B95A4271D3726640075763B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 40F5C07015D5A1A69C49E879 /* Pods-AlamofireOAuth.release.xcconfig */;
+			baseConfigurationReference = 921F6DDFC60210C90B3F166C /* Pods-AlamofireOAuth1.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = KWVYNK7KYH;
@@ -706,9 +712,8 @@
 		};
 		8B95A4291D3726640075763B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1FA74F829A991D85EECE93D1 /* Pods-AlamofireOAuthTests.debug.xcconfig */;
+			baseConfigurationReference = 5684D9EB78D4D3D7D0593E29 /* Pods-AlamofireOAuth1Tests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = AlamofireOAuthTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -720,9 +725,8 @@
 		};
 		8B95A42A1D3726640075763B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 98176176861BF80FD0727D46 /* Pods-AlamofireOAuthTests.release.xcconfig */;
+			baseConfigurationReference = 9D83EF2F3E4278280EA11DAB /* Pods-AlamofireOAuth1Tests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = AlamofireOAuthTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -734,9 +738,8 @@
 		};
 		8B95A42C1D3726640075763B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8ED544F29570B26C58F95047 /* Pods-AlamofireOAuthUITests.debug.xcconfig */;
+			baseConfigurationReference = CE662189B10E140FFAFA2693 /* Pods-AlamofireOAuth1UITests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = AlamofireOAuthUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = space.minesecrete.AlamofireOAuthUITests;
@@ -747,9 +750,8 @@
 		};
 		8B95A42D1D3726640075763B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 471EDC0CD5168A740AC3E24F /* Pods-AlamofireOAuthUITests.release.xcconfig */;
+			baseConfigurationReference = D0BE4364FFEC8C9438D3DE21 /* Pods-AlamofireOAuth1UITests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = AlamofireOAuthUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = space.minesecrete.AlamofireOAuthUITests;

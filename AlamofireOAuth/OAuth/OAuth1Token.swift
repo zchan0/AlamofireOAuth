@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import KeychainAccess
 
 public struct OAuth1Token: Codable {
     var token: String           // "oauth_token"
@@ -74,103 +75,34 @@ public struct OAuth1Token: Codable {
     }
 }
 
-// MARK: OAuth1TokenStore
+// MARK: OAuth1TokenManager
 
-class OAuth1TokenStore {
-    enum KeychainError: Error {
-        case noToken
-        case unexpectedTokenData
-        case unexpectedItemData
-        case unhandledError(status: OSStatus)
+public class OAuth1TokenStore {
+    enum OAuth1TokenStoreError: Error {
+        case noCurrentToken
     }
     
-    static let shared = OAuth1TokenStore()
+    public static let shared = OAuth1TokenStore()
+    fileprivate var keychain: Keychain
     
-    private static let service = "AlamofireOAuth1Service"
-    
-    class func retrieveToken(withIdentifier identifier: String) throws -> OAuth1Token {
-        // Build a query to find the item that matches the service, account.
-        var query = OAuth1TokenStore.keychainQuery(withService: service, account: identifier)
-        query[kSecMatchLimit as String] = kSecMatchLimitOne
-        query[kSecReturnAttributes as String] = kCFBooleanTrue
-        query[kSecReturnData as String] = kCFBooleanTrue
-        
-        // Try to fetch the existing keychain item that matches the query.
-        var queryResult: AnyObject?
-        let status = withUnsafeMutablePointer(to: &queryResult) {
-            SecItemCopyMatching(query as CFDictionary, UnsafeMutablePointer($0))
-        }
-        
-        // Check the return status and throw an error if appropriate.
-        guard status != errSecItemNotFound else { throw KeychainError.noToken }
-        guard status == noErr else { throw KeychainError.unhandledError(status: status) }
-        
-        // Parse the token string from the query result.
-        guard
-            let existingItem = queryResult as? [String : AnyObject],
-            let tokenData = existingItem[kSecValueData as String] as? Data,
-            let token = try? JSONDecoder().decode(OAuth1Token.self, from: tokenData)
-        else {
-            throw KeychainError.unexpectedTokenData
-        }
-        
-        return token
+    private init() {
+        self.keychain = Keychain()  // use bundleId as service by default
     }
     
-    class func deleteToken(withIdentifier identifier: String) throws {
-        // Delete the existing item from the keychain.
-        let query = OAuth1TokenStore.keychainQuery(withService: service, account: identifier)
-        let status = SecItemDelete(query as CFDictionary)
-        
-        // Throw an error if an unexpected status was returned.
-        guard status == noErr || status == errSecItemNotFound else {
-            throw KeychainError.unhandledError(status: status)
-        }
+    func saveToken(_ token: OAuth1Token, withIdentifier identifier: String) {
+        guard let tokenData = try? JSONEncoder().encode(token) else { return }
+        keychain[data: identifier] = tokenData
     }
     
-    class func storeToken(_ token: OAuth1Token, withIdentifier identifier: String) throws {
-        // Encode the token into an Data object.
-        let tokenData = try JSONEncoder().encode(token)
-        
-        do {
-            // Check for an existing item in the keychain.
-            try _ = retrieveToken(withIdentifier: identifier)
-            
-            // Update the existing item with the new token.
-            var attributesToUpdate = [String: AnyObject]()
-            attributesToUpdate[kSecValueData as String] = tokenData as AnyObject?
-            
-            let query = OAuth1TokenStore.keychainQuery(withService: service, account: identifier)
-            let status = SecItemUpdate(query as CFDictionary, attributesToUpdate as CFDictionary)
-            
-            // Throw an error if an unexpected status was returned.
-            guard status == noErr else {
-                throw KeychainError.unhandledError(status: status)
-            }
+    func retrieveCurrentToken(withIdentifier identifier: String) throws -> OAuth1Token {
+        guard let tokenData = keychain[data: identifier] else {
+            throw OAuth1TokenStoreError.noCurrentToken
         }
-        catch KeychainError.noToken {
-            // No token was found in the keychain.
-            // Create a dictionary to save as a new keychain item.
-            var newItem = OAuth1TokenStore.keychainQuery(withService: service, account: identifier)
-            newItem[kSecValueData as String] = tokenData as AnyObject?
-            
-            // Add a the new item to the keychain.
-            let status = SecItemAdd(newItem as CFDictionary, nil)
-            
-            // Throw an error if an unexpected status was returned.
-            guard status == noErr else {
-                throw KeychainError.unhandledError(status: status)
-            }
-        }
+        return try JSONDecoder().decode(OAuth1Token.self, from: tokenData)
     }
     
-    private class func keychainQuery(withService service: String, account: String) -> [String: AnyObject] {
-        var query = [String : AnyObject]()
-        query[kSecClass as String] = kSecClassGenericPassword
-        query[kSecAttrService as String] = service as AnyObject
-        query[kSecAttrAccount as String] = account as AnyObject
-        
-        return query
+    func deleteToken(withIdentifier identifier: String) throws {
+        try keychain.remove(identifier)
     }
 }
 
