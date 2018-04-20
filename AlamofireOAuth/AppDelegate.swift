@@ -18,14 +18,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        let vc = ViewController()
-        window?.rootViewController = vc
+        let viewController = ViewController(style: .plain)
+        let navigation = UINavigationController(rootViewController: viewController)
+        window?.rootViewController = navigation
         
         return true
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        if url.host == "alamofire-oauth1" {
+        if url.scheme == "alamofire-oauth1" {
             OAuth1.handleCallback(callbackURL: url)
         }
         return true

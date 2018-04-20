@@ -26,18 +26,19 @@ public class OAuth1 {
     public var signatureMethod: OAuthSignatureMethod
     public var authorizeURLHandler: OAuthOpenURLHandler
     
-    private var key: String
-    private var secret: String
-    private var token: String
-    private var tokenSecret: String
-    private var authorizeUrl: String
-    private var accessTokenUrl: String
-    private var requestTokenUrl: String
-    private var callbackObserver: Any?
-    private let version: String = "1.0"
+    fileprivate(set) public var key: String
+    fileprivate var secret: String
+    fileprivate var token: String
+    fileprivate var tokenSecret: String
+    fileprivate var authorizeUrl: String
+    fileprivate var accessTokenUrl: String
+    fileprivate var requestTokenUrl: String
+    fileprivate var callbackUrl:String
+    fileprivate var callbackObserver: Any?
+    fileprivate let version: String = "1.0"
     
     
-    init(key: String, secret: String, requestTokenUrl: String, authorizeUrl: String, accessTokenUrl: String) {
+    init(key: String, secret: String, requestTokenUrl: String, authorizeUrl: String, accessTokenUrl: String, callbackUrl: String? = nil) {
         self.key = key
         self.secret = secret
         self.token = ""
@@ -45,8 +46,13 @@ public class OAuth1 {
         self.authorizeUrl = authorizeUrl
         self.accessTokenUrl = accessTokenUrl
         self.requestTokenUrl = requestTokenUrl
+        self.callbackUrl = "oob"
         self.signatureMethod = .HMAC_SHA1
         self.authorizeURLHandler = BrowserOpenURLHandler()
+        
+        if let cb = callbackUrl {
+            self.callbackUrl = cb
+        }
     }
     
     convenience init(withOAuth oauth: OAuth1) {
@@ -54,7 +60,8 @@ public class OAuth1 {
                   secret: oauth.secret,
                   requestTokenUrl: oauth.requestTokenUrl,
                   authorizeUrl: oauth.authorizeUrl,
-                  accessTokenUrl: oauth.accessTokenUrl)
+                  accessTokenUrl: oauth.accessTokenUrl,
+                  callbackUrl: oauth.callbackUrl)
     }
     
     convenience init() {
@@ -62,7 +69,8 @@ public class OAuth1 {
                   secret: OAuth1Settings.ConsumerSecret,
                   requestTokenUrl: OAuth1Settings.RequestTokenUrl,
                   authorizeUrl: OAuth1Settings.AuthorizeUrl,
-                  accessTokenUrl: OAuth1Settings.AccessTokenUrl)
+                  accessTokenUrl: OAuth1Settings.AccessTokenUrl,
+                  callbackUrl: OAuth1Settings.CallbackUrl)
     }
     
     class func handleCallback(callbackURL: URL) {
@@ -70,16 +78,9 @@ public class OAuth1 {
         NotificationCenter.default.post(notification)
     }
     
-    func fetchAccessToken(
-        withCallbackUrl callback: String? = nil,
-        accessMethod: HTTPMethod,
-        successHandler: @escaping SuccessHandler,
-        failureHandler: @escaping FailureHandler)
-    {
-        let callbackUrl = callback ?? "oob"
-        
+    func fetchAccessToken(accessMethod: HTTPMethod, successHandler: @escaping SuccessHandler, failureHandler: @escaping FailureHandler) {
         self.acquireUnauthorizedRequestToken(withAccessMethod: accessMethod, successHandler: { (requestToken) in
-            self.acquireAuthorizedRequestToken(withCallback: callbackUrl, requestToken: requestToken, successHandler: { (requestToken) in
+            self.acquireAuthorizedRequestToken(withCallbackUrl: self.callbackUrl, requestToken: requestToken, successHandler: { (requestToken) in
                 self.acquireAccessToken(withRequestToken: requestToken, accessMethod: accessMethod, successHandler: { (accessToken) in
                     successHandler(accessToken)
                 }, failureHandler: failureHandler)
@@ -108,7 +109,7 @@ public class OAuth1 {
         parameters["oauth_signature"] = signature
         
         let query = parameters.sorted(by: <).map({ $0 + "=" + $1 }).joined(separator: ",")
-        if let urlString = urlRequest.url?.absoluteString, urlString.hasPrefix(OAuth1Settings.BaseUrl) {
+        if let _ = urlRequest.url?.absoluteString {
             var urlRequest = urlRequest
             urlRequest.setValue("OAuth " + query, forHTTPHeaderField: "Authorization")
             urlRequest.setValue("application/json", forHTTPHeaderField: "Accept")
@@ -152,7 +153,7 @@ extension OAuth1 {
     
     // 2. acquire authorized request token
     private func acquireAuthorizedRequestToken(
-        withCallback callback: String,
+        withCallbackUrl callback: String,
         requestToken: OAuth1Token,
         successHandler: @escaping SuccessHandler)
     {

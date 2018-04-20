@@ -15,14 +15,15 @@ open class APIClient: RequestAdapter {
     open static var `default` = APIClient()
     
     fileprivate let oauth1: OAuth1
-    fileprivate let tokenId: String = "AlamofireOAuth1.TokenId"
+    fileprivate let tokenId: String
     fileprivate let errorHandler: (Error) -> Void = { (error) in
         print(error.localizedDescription)
     }
     
     init(withOAuth oauth: OAuth1) {
-        self.oauth1 = OAuth1(withOAuth: oauth)
         self.keychain = Keychain()
+        self.oauth1 = OAuth1(withOAuth: oauth)
+        self.tokenId = oauth1.key
         self.sessionManager = SessionManager()
         self.sessionManager.adapter = self
     }
@@ -30,6 +31,7 @@ open class APIClient: RequestAdapter {
     // default APIClient
     private init() {
         self.oauth1 = OAuth1()
+        self.tokenId = oauth1.key
         self.keychain = Keychain()
         self.sessionManager = SessionManager()
         self.sessionManager.adapter = self
@@ -48,11 +50,9 @@ open class APIClient: RequestAdapter {
         if let URLHandler = authorizeURLHandler {
             oauth1.authorizeURLHandler = URLHandler
         }
-        oauth1.fetchAccessToken(withCallbackUrl: OAuth1Settings.CallbackUrl, accessMethod: .get, successHandler: { (accessToken) in
-            do {
-                OAuth1TokenStore.shared.saveToken(accessToken, withIdentifier: self.tokenId)
-                completion()
-            }
+        oauth1.fetchAccessToken(accessMethod: .get, successHandler: { (accessToken) in
+            OAuth1TokenStore.shared.saveToken(accessToken, withIdentifier: self.tokenId)
+            completion()
         }, failureHandler: errorHandler)
     }
 }
