@@ -37,7 +37,7 @@ extension ViewController {
                             requestTokenUrl: "http://fanfou.com/oauth/request_token",
                             authorizeUrl: "http://fanfou.com/oauth/authorize",
                             accessTokenUrl: "http://fanfou.com/oauth/access_token",
-                            callbackUrl: "alamofire-oauth1://callback")
+                            callbackUrl: "alamofire-oauth1://alamofire-oauth1/callback")
         let client = APIClient(withOAuth: oauth1)
         client.authorize {
             client.request(Router.fanfou).validate().responseJSON(completionHandler: { (response) in
