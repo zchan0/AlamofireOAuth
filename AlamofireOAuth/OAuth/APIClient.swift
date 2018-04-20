@@ -20,6 +20,14 @@ open class APIClient: RequestAdapter {
         print(error.localizedDescription)
     }
     
+    init(withOAuth oauth: OAuth1) {
+        self.oauth1 = OAuth1(withOAuth: oauth)
+        self.keychain = Keychain()
+        self.sessionManager = SessionManager()
+        self.sessionManager.adapter = self
+    }
+    
+    // default APIClient
     private init() {
         self.oauth1 = OAuth1()
         self.keychain = Keychain()

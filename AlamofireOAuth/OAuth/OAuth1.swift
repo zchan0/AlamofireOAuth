@@ -49,6 +49,14 @@ public class OAuth1 {
         self.authorizeURLHandler = BrowserOpenURLHandler()
     }
     
+    convenience init(withOAuth oauth: OAuth1) {
+        self.init(key: oauth.key,
+                  secret: oauth.secret,
+                  requestTokenUrl: oauth.requestTokenUrl,
+                  authorizeUrl: oauth.authorizeUrl,
+                  accessTokenUrl: oauth.accessTokenUrl)
+    }
+    
     convenience init() {
         self.init(key: OAuth1Settings.ConsumerKey,
                   secret: OAuth1Settings.ConsumerSecret,
